@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Подбор героев Overwatch</title>
+  <link rel="stylesheet" href="/CounterPicksOW2/static.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Выбери героев</h1>
+
+  <!-- Выбранные герои -->
+  <div id="selected-heroes" class="selected-heroes">
+    <p>Выбранные (макс 5):</p>
+    <div id="hero-slots" class="hero-slots"></div>
+  </div>
+
+  <!-- Блоки ролей -->
+  <div class="roles">
+
+    <!-- ТАНК -->
+    <div class="role tank">
+      <h2>Танк</h2>
+      <div class="heroes">
+        <button onclick="addHero('D.Va')">
+          <img src="/CounterPicksOW2/staticdva.jpg" alt="D.Va">
+        </button>
+        <button onclick="addHero('Азарт')">
+          <img src="/CounterPicksOW2/statichazard.jpg" alt="Азарт">
+        </button>
+        <button onclick="addHero('Заря')">
+          <img src="/CounterPicksOW2/staticzarya.jpg" alt="Заря">
+        </button>
+      </div>
+    </div>
+
+    <!-- УРОН -->
+    <div class="role damage">
+      <h2>Урон</h2>
+      <div class="heroes">
+        <button onclick="addHero('Авентюра')">
+          <img src="/CounterPicksOW2/staticventure.jpg" alt="Авентюра">
+        </button>
+        <button onclick="addHero('Бастион')">
+          <img src="/CounterPicksOW2/staticbastion.jpg" alt="Бастион">
+        </button>
+        <button onclick="addHero('Гэндзи')">
+          <img src="/CounterPicksOW2/staticgenji.jpg" alt="Гэндзи">
+        </button>
+      </div>
+    </div>
+
+    <!-- ПОДДЕРЖКА -->
+    <div class="role support">
+      <h2>Поддержка</h2>
+      <div class="heroes">
+        <button onclick="addHero('Ана')">
+          <img src="/CounterPicksOW2/staticana.jpg" alt="Ана">
+        </button>
+        <button onclick="addHero('Ангел')">
+          <img src="/CounterPicksOW2/staticmercy.jpg" alt="Ангел">
+        </button>
+        <button onclick="addHero('Батист')">
+          <img src="/CounterPicksOW2/staticbaptiste.jpg" alt="Батист">
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/CounterPicksOW2/static.js"></script>
+</body>
+</html>
