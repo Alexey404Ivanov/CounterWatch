@@ -1,6 +1,28 @@
 body {
-  font-family: "Anton", sans-serif;
-  letter-spacing: 1px; /* чуть шире как у OW */
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #1a1a1a;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.selected-heroes {
+  margin-bottom: 30px;
+}
+
+.hero-slots {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hero-slot {
+  padding: 10px;
+  background: #333;
+  border-radius: 6px;
 }
 
 .roles {
@@ -11,9 +33,6 @@ body {
   margin: 20px 0;
 }
 
-.role.tank h2 {
-  font-family: 'Anton', sans-serif;
-}
 /* Контейнер роли */
 .role {
   flex: 1;
@@ -43,40 +62,49 @@ body {
 
 /* Ограничения по колонкам */
 .role.tank .role-icons {
-  grid-template-columns: repeat(4, 64px);
+  grid-template-columns: repeat(4, 119px);
 }
 
 .role.support .role-icons {
-  grid-template-columns: repeat(4, 64px);
+  grid-template-columns: repeat(4, 119px);
 }
 
 .role.damage .role-icons {
-  grid-template-columns: repeat(5, 64px);
+  grid-template-columns: repeat(5, 119px);
 }
 
 /* Кнопка-иконка */
 .hero {
-  width: 64px;
-  height: 64px;
+  width: 119px;
+  height: 150px;
+  border-radius: 12px;
   border: 2px solid transparent; /* убираем белые рамки, оставляем место для подсветки */
   outline: none;
   padding: 0;
   margin: 0;
   background: none;
   cursor: pointer;
+
 }
 
 .hero img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   border-radius: 8px;
   display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Эффект при наведении */
 .hero:hover {
-  border-color: #00ffcc;
+  border-color: transparent;
   transform: scale(1.05);
   transition: 0.2s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* тень для объёма */
+}
+
+.hero-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
