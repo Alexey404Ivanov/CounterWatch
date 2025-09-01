@@ -26,6 +26,6 @@ templates = Jinja2Templates(directory="templates")
 async def root():
     return FileResponse("templates/index.html")
 
-@app.post("/counterpick", response_model=defaultdict(list))
-def get_counterpicks(request: HeroRequest):
-    return create_counterpick_dict(request.heroes)
+@app.post("/get-counter-picks", response_model=defaultdict(list[CounterPick]))
+def get_counter_picks(request: HeroRequest):
+    return create_counter_pick_dict(request.heroes)

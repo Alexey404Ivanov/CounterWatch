@@ -10,7 +10,7 @@ from hero_data import *
 
 hero_library = init_heroes()
 
-def create_counterpick_dict(enemy_team: list[str]):
+def create_counter_pick_dict(enemy_team: list[str]):
     counter_tank = hero_library[enemy_team[0]].counters[Role.TANK][0]
 
     tank_counters_power = defaultdict(int)

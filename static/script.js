@@ -77,3 +77,22 @@ function removeHero(roleName, idx) {
     heroes[1].removeChild(heroes[1].querySelector("img"))
   }
 }
+
+async function showCounterPicks() {
+    const response = await fetch("/get_counters", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            heroes: selectedTanks.concat(selectedDps, selectedSupports)
+        })
+    });
+
+    if (response.ok) {
+        const dict = await response.json();
+
+    } else {
+        console.error("Ошибка при получении контрпиков");
+    }
+}

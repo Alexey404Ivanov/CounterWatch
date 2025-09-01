@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Подбор героев Overwatch</title>
   <link rel="stylesheet" href="/static/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="/static/kiri.ico" sizes="32x32">
 </head>
 <body>
@@ -98,7 +98,42 @@
     </div>
   </div>
 
-  <button id="find-button">Подобрать команду</button>
+  <button onclick="showCounterPicks()" id="find-button">Подобрать команду</button>
+
+
+
+  <div class="counter-note">
+    <div class="note-header">
+      <img src="/static/icons/ana.png" alt="Ана" class="hero-icon">
+      <h2 class="hero-name">АНА</h2>
+    </div>
+
+    <div class="note-content">
+      <div class="counter-block">
+        <div class="counter-item">
+          <img src="/static/icons/hog.png" alt="Турбосвин" class="counter-icon">
+          <p><strong>Турбосвин (Сильный):</strong> Банка Аны блокирует хил Свину, из-за чего он моментально умирает, т.к. играет на контакте и не может быстро выйти из боя.</p>
+        </div>
+
+        <div class="counter-item">
+          <img src="/static/icons/reaper.png" alt="Жнец" class="counter-icon">
+          <p><strong>Жнец (Средний):</strong> Слипает во время ульты.</p>
+        </div>
+
+        <div class="counter-item">
+          <img src="/static/icons/pharah.png" alt="Фарра" class="counter-icon">
+          <p><strong>Фарра (Слабый):</strong> Слипает Фарру во время её ульты, может немного дамажить по ней своим оружием.</p>
+        </div>
+
+        <div class="counter-item">
+          <img src="/static/icons/mercy.png" alt="Ангел" class="counter-icon">
+          <p><strong>Ангел (Сильный):</strong> Спокойно убивает Ангела, пока она в воздухе, слипает во время реzzа.</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+
   <script src="/static/script.js"></script>
 </body>
 </html>
