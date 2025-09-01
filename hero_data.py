@@ -26,7 +26,7 @@ hero_library: dict[str, EnemyHero] = {
             Role.TANK: [
                 Counter(name="Турбосвин", power=3,
                         reason="Дробовик и хук идеально работают на большой хитбокс Уинстона"),
-                Counter(name="Дива", power=2,
+                Counter(name="D.Va", power=2,
                         reason="Легко догоняет Уинстона, но плохо ломает его куполы"),
                 Counter(name="Королева Стервятников", power=1,
                         reason="Нет абилок на Уинстона, но хороший дробовик против него"),
@@ -305,7 +305,7 @@ hero_library: dict[str, EnemyHero] = {
             Role.TANK: [
                 Counter(name="Турбосвин", power=3,
                         reason="Хук, ловушка, последующий выстрел из дробовика дает колоссальный урон по Тарану"),
-                Counter(name="Дива", power=2,
+                Counter(name="D.Va", power=2,
                         reason="Догоняет Тарана и дает много урона по нему своими дробовиками"),
                 Counter(name="Кулак Смерти", power=1,
                         reason="Мобильный и контактный Думфист наказывает Тарана за глубокий дайв в союзников"),
@@ -652,7 +652,7 @@ hero_library: dict[str, EnemyHero] = {
                         reason="Щит спасает от ее выстрелов, в некоторых случаях может даже достать до нее "),
             ],
             Role.DAMAGE: [
-                Counter(name="Генджи", power=3,
+                Counter(name="Гэндзи", power=3,
                         reason="Слишком верткий и мобильный персонаж, по которому трудно попасть Вдове"),
                 Counter(name="Трейсер", power=3,
                         reason="Слишком верткий и мобильный персонаж, по которому трудно попасть Вдове"),
@@ -976,37 +976,6 @@ hero_library: dict[str, EnemyHero] = {
                         reason="Слип и последующая банка может остановить Авентюру от закапывания"),
                 Counter(name="Кирико", power=1,
                         reason="Просто комфортный саппорт для игры против Авентюры"),
-            ]
-        }
-    ),
-
-    "Фрейя": EnemyHero(
-        name="Фрейя",
-        role=Role.DAMAGE,
-        counters={
-            Role.TANK: [
-                Counter(name="", power=3,
-                        reason=""),
-                Counter(name="", power=3,
-                        reason=""),
-                Counter(name="", power=1,
-                        reason=""),
-            ],
-            Role.DAMAGE: [
-                Counter(name="", power=3,
-                        reason=""),
-                Counter(name="", power=2,
-                        reason=""),
-                Counter(name="", power=2,
-                        reason=""),
-            ],
-            Role.SUPPORT: [
-                Counter(name="", power=3,
-                        reason=""),
-                Counter(name="", power=2,
-                        reason=""),
-                Counter(name="", power=1,
-                        reason=""),
             ]
         }
     ),

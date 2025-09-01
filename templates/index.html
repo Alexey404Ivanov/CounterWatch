@@ -5,15 +5,10 @@
   <title>Подбор героев Overwatch</title>
   <link rel="stylesheet" href="/static/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/static/kiri.ico" sizes="32x32">
 </head>
 <body>
-  <h1>Выбери героев</h1>
-
-  <!-- Выбранные герои -->
-  <div id="selected-heroes" class="selected-heroes">
-    <p>Выбранные (макс 5):</p>
-    <div id="hero-slots" class="hero-slots"></div>
-  </div>
+  <h1>Собери вражескую команду</h1>
 
   <!-- Блоки ролей -->
   <div class="roles">
@@ -24,8 +19,8 @@
       <button class="hero"><img src="/static/other/dva.png" alt="D.Va"></button>
       <button class="hero"><img src="/static/other/hazard.png" alt="Азарт"></button>
       <button class="hero"><img src="/static/other/zarya.png" alt="Заря"></button>
-      <button class="hero"><img src="/static/other/queen.png" alt="Королева"></button>
-      <button class="hero"><img src="/static/other/doomfist.png" alt="Кулак"></button>
+      <button class="hero"><img src="/static/other/queen.png" alt="Королева Стервятников"></button>
+      <button class="hero"><img src="/static/other/doomfist.png" alt="Кулак Смерти"></button>
       <button class="hero"><img src="/static/other/mauga.png" alt="Мауга"></button>
       <button class="hero"><img src="/static/other/orisa.png" alt="Ориса"></button>
       <button class="hero"><img src="/static/other/rein.png" alt="Райнхардт"></button>
@@ -43,15 +38,15 @@
     <div class="role-icons">
       <button class="hero"><img src="/static/other/venture.png" alt="Авентюра"></button>
       <button class="hero"><img src="/static/other/bastion.png" alt="Бастион"></button>
-      <button class="hero"><img src="/static/other/genji.png" alt="Гендзи"></button>
+      <button class="hero"><img src="/static/other/genji.png" alt="Гэндзи"></button>
       <button class="hero"><img src="/static/other/reaper.png" alt="Жнец"></button>
       <button class="hero"><img src="/static/other/junkrat.png" alt="Крысавчик"></button>
       <button class="hero"><img src="/static/other/cassidy.png" alt="Кэссиди"></button>
-      <button class="hero"><img src="/static/other/mei.png" alt="Мей"></button>
-      <button class="hero"><img src="/static/other/widow.png" alt="Вдова"></button>
+      <button class="hero"><img src="/static/other/mei.png" alt="Мэй"></button>
+      <button class="hero"><img src="/static/other/widow.png" alt="Роковая Вдова"></button>
       <button class="hero"><img src="/static/other/sym.png" alt="Симметра"></button>
       <button class="hero"><img src="/static/other/sodjorn.png" alt="Соджорн"></button>
-      <button class="hero"><img src="/static/other/soldier.png" alt="Солдат"></button>
+      <button class="hero"><img src="/static/other/soldier.png" alt="Солдат-76"></button>
       <button class="hero"><img src="/static/other/sombra.png" alt="Сомбра"></button>
       <button class="hero"><img src="/static/other/torb.png" alt="Торбьорн"></button>
       <button class="hero"><img src="/static/other/tracer.png" alt="Трейсер"></button>
@@ -75,12 +70,35 @@
       <button class="hero"><img src="/static/other/kiriko.png" alt="Кирико"></button>
       <button class="hero"><img src="/static/other/lucio.png" alt="Лусио"></button>
       <button class="hero"><img src="/static/other/moira.png" alt="Мойра"></button>
-      <button class="hero"><img src="/static/other/weever.png" alt="Ткач"></button>
+      <button class="hero"><img src="/static/other/weever.png" alt="Ткач Жизни"></button>
       <button class="hero"><img src="/static/other/juno.png" alt="Юнона"></button>
     </div>
   </div>
 </div>
 
+  <div class="selected-roles">
+    <div id="Танк" class="selected-role">
+      <div class="heroes">
+        <button class="selected-hero"></button>
+      </div>
+    </div>
+
+    <div id="Урон" class="selected-role">
+      <div class="heroes">
+        <button class="selected-hero"></button>
+        <button class="selected-hero"></button>
+      </div>
+    </div>
+
+    <div id="Поддержка" class="selected-role">
+      <div class="heroes">
+        <button class="selected-hero"></button>
+        <button class="selected-hero"></button>
+      </div>
+    </div>
+  </div>
+
+  <button id="find-button">Подобрать команду</button>
   <script src="/static/script.js"></script>
 </body>
 </html>

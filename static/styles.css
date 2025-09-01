@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Anton, sans-serif;
   padding: 20px;
   background: #1a1a1a;
   color: white;
@@ -7,22 +7,54 @@ body {
 
 h1 {
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.selected-heroes {
-  margin-bottom: 30px;
-}
-
-.hero-slots {
+.selected-roles {
   display: flex;
+  justify-content: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
-.hero-slot {
-  padding: 10px;
+.selected-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.selected-hero {
+  width: 119px;
+  height: 150px;
+  border-radius: 12px;
+  border: 2px solid transparent; /* убираем белые рамки, оставляем место для подсветки */
+  outline: none;
+  padding: 0;
+  margin: 0;
   background: #333;
-  border-radius: 6px;
+  cursor: pointer;
+}
+
+.selected-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.selected-hero:hover {
+  border-color: transparent;
+  transform: scale(1.05);
+  transition: 0.2s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* тень для объёма */
+}
+
+.selected-hero:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .roles {
@@ -84,7 +116,6 @@ h1 {
   margin: 0;
   background: none;
   cursor: pointer;
-
 }
 
 .hero img {
@@ -104,7 +135,27 @@ h1 {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* тень для объёма */
 }
 
-.hero-btn:active {
+.hero:active {
   transform: scale(0.95);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#find-button {
+  justify-content: center;
+  display: none;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#find-button:active {
+  transform: translateY(0);
+  background-color: #3e8e41;
 }
