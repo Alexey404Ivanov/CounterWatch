@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Подбор героев Overwatch</title>
+  <title>Член</title>
   <link rel="stylesheet" href="/static/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="/static/kiri.ico" sizes="32x32">
@@ -19,8 +19,8 @@
       <button class="hero"><img src="/static/other/dva.png" alt="D.Va"></button>
       <button class="hero"><img src="/static/other/hazard.png" alt="Азарт"></button>
       <button class="hero"><img src="/static/other/zarya.png" alt="Заря"></button>
-      <button class="hero"><img src="/static/other/queen.png" alt="Королева Стервятников"></button>
-      <button class="hero"><img src="/static/other/doomfist.png" alt="Кулак Смерти"></button>
+      <button class="hero"><img src="/static/other/queen.png" alt="Королева_Стервятников"></button>
+      <button class="hero"><img src="/static/other/doomfist.png" alt="Кулак_Смерти"></button>
       <button class="hero"><img src="/static/other/mauga.png" alt="Мауга"></button>
       <button class="hero"><img src="/static/other/orisa.png" alt="Ориса"></button>
       <button class="hero"><img src="/static/other/rein.png" alt="Райнхардт"></button>
@@ -43,9 +43,9 @@
       <button class="hero"><img src="/static/other/junkrat.png" alt="Крысавчик"></button>
       <button class="hero"><img src="/static/other/cassidy.png" alt="Кэссиди"></button>
       <button class="hero"><img src="/static/other/mei.png" alt="Мэй"></button>
-      <button class="hero"><img src="/static/other/widow.png" alt="Роковая Вдова"></button>
+      <button class="hero"><img src="/static/other/widow.png" alt="Роковая_Вдова"></button>
       <button class="hero"><img src="/static/other/sym.png" alt="Симметра"></button>
-      <button class="hero"><img src="/static/other/sodjorn.png" alt="Соджорн"></button>
+      <button class="hero"><img src="/static/other/sojourn.png" alt="Соджорн"></button>
       <button class="hero"><img src="/static/other/soldier.png" alt="Солдат-76"></button>
       <button class="hero"><img src="/static/other/sombra.png" alt="Сомбра"></button>
       <button class="hero"><img src="/static/other/torb.png" alt="Торбьорн"></button>
@@ -70,7 +70,7 @@
       <button class="hero"><img src="/static/other/kiriko.png" alt="Кирико"></button>
       <button class="hero"><img src="/static/other/lucio.png" alt="Лусио"></button>
       <button class="hero"><img src="/static/other/moira.png" alt="Мойра"></button>
-      <button class="hero"><img src="/static/other/weever.png" alt="Ткач Жизни"></button>
+      <button class="hero"><img src="/static/other/weaver.png" alt="Ткач_Жизни"></button>
       <button class="hero"><img src="/static/other/juno.png" alt="Юнона"></button>
     </div>
   </div>
@@ -98,41 +98,9 @@
     </div>
   </div>
 
-  <button onclick="showCounterPicks()" id="find-button">Подобрать команду</button>
+  <button onclick="getCounterPicks()" id="find-button">Подобрать команду</button>
 
-
-
-  <div class="counter-note">
-    <div class="note-header">
-      <img src="/static/icons/ana.png" alt="Ана" class="hero-icon">
-      <h2 class="hero-name">АНА</h2>
-    </div>
-
-    <div class="note-content">
-      <div class="counter-block">
-        <div class="counter-item">
-          <img src="/static/icons/hog.png" alt="Турбосвин" class="counter-icon">
-          <p><strong>Турбосвин (Сильный):</strong> Банка Аны блокирует хил Свину, из-за чего он моментально умирает, т.к. играет на контакте и не может быстро выйти из боя.</p>
-        </div>
-
-        <div class="counter-item">
-          <img src="/static/icons/reaper.png" alt="Жнец" class="counter-icon">
-          <p><strong>Жнец (Средний):</strong> Слипает во время ульты.</p>
-        </div>
-
-        <div class="counter-item">
-          <img src="/static/icons/pharah.png" alt="Фарра" class="counter-icon">
-          <p><strong>Фарра (Слабый):</strong> Слипает Фарру во время её ульты, может немного дамажить по ней своим оружием.</p>
-        </div>
-
-        <div class="counter-item">
-          <img src="/static/icons/mercy.png" alt="Ангел" class="counter-icon">
-          <p><strong>Ангел (Сильный):</strong> Спокойно убивает Ангела, пока она в воздухе, слипает во время реzzа.</p>
-        </div>
-      </div>
-  </div>
-</div>
-
+<div id="counters-container"></div>
 
   <script src="/static/script.js"></script>
 </body>

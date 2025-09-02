@@ -78,21 +78,135 @@ function removeHero(roleName, idx) {
   }
 }
 
-async function showCounterPicks() {
-    const response = await fetch("/get_counters", {
+async function getCounterPicks() {
+    const full_team = selectedTanks.concat(selectedDps, selectedSupports);
+    const response = await fetch("http://127.0.0.1:8000/get_counters", {
         method: "POST",
         headers: {
         "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            heroes: selectedTanks.concat(selectedDps, selectedSupports)
+            heroes: full_team
         })
     });
 
     if (response.ok) {
         const dict = await response.json();
-
+        showCounterPicks(dict, full_team);
     } else {
         console.error("Ошибка при получении контрпиков");
     }
+}
+
+const iconMap = {
+  "Ана": "ana.png",
+  "Эш": "ashe.png",
+  "Батист": "baptiste.png",
+  "Бастион": "bastion.png",
+  "Бригитта": "brig.png",
+  "Кэссиди": "cassidy.png",
+  "Кулак_Смерти": "doomfist.png",
+  "D.Va": "dva.png",
+  "Дзеньятта": "dzen.png",
+  "Эхо": "echo.png",
+  "Гэндзи": "genji.png",
+  "Таран": "hammond.png",
+  "Хандзо": "hanzo.png",
+  "Азарт": "hazard.png",
+  "Турбосвин": "hog.png",
+  "Иллари": "illari.png",
+  "Крысавчик": "junkrat.png",
+  "Юнона": "juno.png",
+  "Кирико": "kiriko.png",
+  "Лусио": "lucio.png",
+  "Мауга": "mauga.png",
+  "Мэй": "mei.png",
+  "Ангел": "mercy.png",
+  "Мойра": "moira.png",
+  "Ориса": "orisa.png",
+  "Фарра": "pharah.png",
+  "Королева_Стервятников": "queen.png",
+  "Раматтра" : "ram.png",
+  "Жнец": "reaper.png",
+  "Райнхардт": "rein.png",
+  "Сигма": "sigma.png",
+  "Соджорн": "sojourn.png",
+  "Солдат-76": "soldier.png",
+  "Сомбра": "sombra.png",
+  "Симметра": "sym.png",
+  "Торбьорн": "torb.png",
+  "Трейсер": "tracer.png",
+  "Авентюра": "venture.png",
+  "Ткач_Жизни": "weaver.png",
+  "Роковая_Вдова": "widow.png",
+  "Уинстон": "winston.png",
+  "Заря": "zarya.png",
+  };
+
+function showCounterPicks(responseDict) {
+  const container = document.getElementById("counters-container");
+  container.innerHTML = ""; // очищаем старый вывод
+
+  const countersObj = responseDict.counters;
+
+  for (const [hero, counters] of Object.entries(countersObj)) {
+    // Карточка героя
+    const heroCard = document.createElement("div");
+    heroCard.classList.add("counter-note");
+
+    // Заголовок героя
+    const header = document.createElement("div");
+    header.classList.add("note-header");
+
+    const heroIcon = document.createElement("img");
+    heroIcon.src = `/static/icons/${iconMap[hero]}`;
+    heroIcon.alt = hero;
+    heroIcon.classList.add("hero-icon");
+
+    const heroName = document.createElement("h2");
+    heroName.classList.add("hero-name");
+    let isUnderLine = hero.indexOf('_') !== -1
+    heroName.textContent = isUnderLine ? hero.replace('_', ' ') : hero;
+
+    header.appendChild(heroIcon);
+    header.appendChild(heroName);
+
+    // Контент
+    const content = document.createElement("div");
+    content.classList.add("note-content");
+
+    const counterBlock = document.createElement("div");
+    counterBlock.classList.add("counter-block");
+
+    // Контрящие герои
+    counters.forEach(([counterName, description]) => {
+      const counterItem = document.createElement("div");
+      counterItem.classList.add("counter-item");
+
+      const counterHeroName = counterName.split(" ")[0]; // берем имя без (Сильный/Слабый)
+      const counterIcon = document.createElement("img");
+      counterIcon.src = `/static/icons/${iconMap[counterHeroName]}`;
+      counterIcon.alt = counterHeroName;
+      counterIcon.classList.add("counter-icon");
+
+      const counterText = document.createElement("p");
+      let isUnderLine = counterHeroName.indexOf('_') !== -1
+      counterName = isUnderLine ? counterName.replace('_', ' ') : counterName;
+      counterText.innerHTML = `<strong>${counterName}:</strong> ${description}`;
+
+      counterItem.appendChild(counterIcon);
+      counterItem.appendChild(counterText);
+      counterBlock.appendChild(counterItem);
+    });
+
+    content.appendChild(counterBlock);
+    heroCard.appendChild(header);
+    heroCard.appendChild(content);
+
+    container.appendChild(heroCard);
+    document.getElementById("counters-container").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+  }
 }

@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-
+from typing import List, Dict, Tuple
 from logic import *
 app = FastAPI()
 
@@ -11,11 +11,12 @@ app = FastAPI()
 class HeroRequest(BaseModel):
     heroes: list[str]
 
-# Модель ответа
-class CounterPick(BaseModel):
-    role: str
-    name: str
-    reason: str
+class CounterPickResponse(BaseModel):
+    counters: Dict[str, List[List[str]]]
+
+@app.post("/get_counters", response_model=CounterPickResponse)
+async def get_counter_picks(request: HeroRequest):
+    return {"counters" : create_counter_pick_dict(request.heroes)}
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -26,6 +27,3 @@ templates = Jinja2Templates(directory="templates")
 async def root():
     return FileResponse("templates/index.html")
 
-@app.post("/get-counter-picks", response_model=defaultdict(list[CounterPick]))
-def get_counter_picks(request: HeroRequest):
-    return create_counter_pick_dict(request.heroes)

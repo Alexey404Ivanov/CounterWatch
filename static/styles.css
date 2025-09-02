@@ -3,6 +3,7 @@ body {
   padding: 20px;
   background: #1a1a1a;
   color: white;
+  scroll-behavior: smooth;
 }
 
 h1 {

@@ -46,7 +46,6 @@ def create_counter_pick_dict(enemy_team: list[str]):
     for hero_name in our_team_names:
         for tpl in counters_library:
             if tpl[1] == hero_name:
-                result_dict[hero_name].append(f'({tpl[0]}, {power_levels[tpl[2]]}) — {tpl[3]}')
-
-    return result_dict
+                result_dict[hero_name].append([f'{tpl[0]} ({power_levels[tpl[2]]})', str(tpl[3])])
+    return dict(result_dict)
 
