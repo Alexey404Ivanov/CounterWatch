@@ -1,40 +1,96 @@
+:root {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Nunito, sans-serif;
   padding: 20px;
-  background: #1a1a1a;
-  color: white;
-  scroll-behavior: smooth;
+  background: #11161d;
+  background: radial-gradient(circle, #1b2735 0%, #11161d 100%);
+  color: #e0e0e0;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 600px;
+  height: 300px;
+  object-fit: contain;
 }
 
 h1 {
   margin-bottom: 20px;
   text-align: center;
+  color: #f0f0f0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.selected-heroes-section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.selected-title {
+  text-align: center;
 }
 
 .selected-roles {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 40px;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background: rgba(27, 39, 53, 0.5);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .selected-role {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+}
+
+#Танк.selected-role, #Поддержка.selected-role {
+    flex-basis: 288px; /* (119+10)*2 + 20*2 = 298? нет, 2 слота */
+}
+
+.selected-role-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff9c00;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .selected-hero {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
   width: 119px;
   height: 150px;
   border-radius: 12px;
-  border: 2px solid transparent; /* убираем белые рамки, оставляем место для подсветки */
   outline: none;
   padding: 0;
-  margin: 0;
-  background: #333;
+  margin: 5px;
+  background: rgba(0,0,0,0.2);
   cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.selected-hero:hover {
+  background: rgba(0,0,0,0.3);
+  border-color: #555;
 }
 
 .selected-hero img {
@@ -46,17 +102,17 @@ h1 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.selected-hero:hover {
-  border-color: transparent;
-  transform: scale(1.05);
-  transition: 0.2s;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* тень для объёма */
-}
+/*.selected-hero:hover {*/
+/*  border-color: transparent;*/
+/*  transform: scale(1.05);*/
+/*  transition: 0.2s;*/
+/*  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); !* тень для объёма *!*/
+/*}*/
 
-.selected-hero:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
+/*.selected-hero:active {*/
+/*  transform: scale(0.95);*/
+/*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
+/*}*/
 
 .roles {
   display: flex;
@@ -72,18 +128,28 @@ h1 {
   display: flex;
   flex-direction: column; /* сверху текст, снизу иконки */
   align-items: center;
-  gap: 10px;
-  background: rgba(0,0,0,0.2);
-  padding: 10px;
-  border-radius: 10px;
+  gap: 15px;
+  background: rgba(27, 39, 53, 0.5);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.role:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
 }
 
 /* Название роли */
 .role-title {
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: white;
+  color: #ff9c00;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Сетка для иконок */
@@ -115,8 +181,9 @@ h1 {
   outline: none;
   padding: 0;
   margin: 0;
-  background: none;
+  background: #2c2c2c;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .hero img {
@@ -145,20 +212,30 @@ h1 {
   justify-content: center;
   display: none;
   margin: 20px auto 0;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 18px;
   font-weight: bold;
   color: white;
-  background-color: #007bff;
+  background-color: #fa9c1e;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(250, 156, 30, 0.2);
+}
+
+#find-button:hover {
+  background-color: #ffad42;
+  box-shadow: 0 6px 15px rgba(250, 156, 30, 0.3);
+  transform: translateY(-2px);
 }
 
 #find-button:active {
   transform: translateY(0);
-  background-color: #3e8e41;
+  background-color: #e08b1a;
+  box-shadow: 0 2px 5px rgba(250, 156, 30, 0.2);
 }
 
 .counter-note {
@@ -169,6 +246,13 @@ h1 {
   margin: 40px auto;
   box-shadow: 0 6px 18px rgba(0,0,0,0.6);
   border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.counter-note:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  border-color: rgba(255,255,255,0.2);
 }
 
 .note-header {
@@ -176,7 +260,7 @@ h1 {
   align-items: center;
   margin-bottom: 25px;
   padding-bottom: 15px;
-  border-bottom: 2px solid rgba(255,255,255,0.15);
+  border-bottom: 2px solid #ff9c00;
 }
 
 .hero-icon {
@@ -184,6 +268,7 @@ h1 {
   height: 90px;
   border-radius: 8px;
   margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
 .hero-name {
@@ -202,6 +287,13 @@ h1 {
   display: flex;
   align-items: flex-start;
   gap: 18px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.counter-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .counter-icon {
@@ -209,6 +301,7 @@ h1 {
   height: 60px;
   border-radius: 6px;
   flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .counter-item p {

@@ -14,29 +14,43 @@ document.querySelectorAll(".hero").forEach(btn => {
   btn.addEventListener("click", () => {
     const img = btn.querySelector("img");
     const roleName = btn.closest(".role").querySelector(".role-title").textContent;
-    addHero(roleName, img.alt, img.src);
+    addRemoveHero(roleName, img.alt, img.src);
   });
 });
 
-document.querySelectorAll(".selected-role").forEach(roleBlock => {
-  const roleName = roleBlock.id;
-  roleBlock.querySelectorAll(".selected-hero").forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      removeHero(roleName, index);
-        findButton.style.display = "none";
-    });
-  });
-});
+// document.querySelectorAll(".selected-role").forEach(roleBlock => {
+//   const roleName = roleBlock.id;
+//   roleBlock.querySelectorAll(".selected-hero").forEach((btn, index) => {
+//     btn.addEventListener("click", () => {
+//       const img = btn.querySelector("img");
+//       addRemoveHero(roleName, img.alt, img.src);
+//     });
+//   });
+// });
 
-function addHero(roleName, heroName, imageUrl) {
+function convertIconImage(imageUrl, toNormal) {
+  return toNormal ? imageUrl.replace("/black-white/", "/normal/") : imageUrl.replace("/normal/", "/black-white/");
+}
+
+function addRemoveHero(roleName, heroName, imageUrl) {
   const selectedHeroes = roleDict[roleName];
-  if (selectedHeroes.includes(heroName)) return; // предотвращаем дублирование героев
+  const heroButton = document.querySelector(`.hero img[alt="${heroName}"]`).closest('button');
 
-  if (roleName !== "Танк" && selectedHeroes.length === 2) {
-    alert("Роль уже набрана! Удалите героя, чтобы добавить нового.");
+  if (selectedHeroes.includes(heroName)) {
+    const idx = selectedHeroes.indexOf(heroName);
+    removeHero(roleName,idx);
+    let currentImage = document.querySelector(`button.hero img[alt="${heroName}"]`);
+    currentImage.src = convertIconImage(currentImage.src, true);
+    findButton.style.display = "none";
     return;
   }
 
+  if (roleName !== "Танк" && selectedHeroes.length === 2 || roleName === "Танк" && selectedHeroes.length === 1) {
+    alert("Роль уже набрана! Удалите героя, чтобы добавить нового.");
+    return;
+  }
+  let currentImage = document.querySelector(`button.hero img[alt="${heroName}"]`);
+  currentImage.src = convertIconImage(imageUrl, false);
   selectedHeroes.push(heroName);
   let heroes = document.getElementById(roleName).querySelectorAll(".selected-hero")
   for (let hero of heroes) {
@@ -45,9 +59,11 @@ function addHero(roleName, heroName, imageUrl) {
       img = document.createElement("img");
       hero.appendChild(img)
       img.src = imageUrl;
+      img.alt = heroName;
       break;
     }
   }
+
   let heroesCount = selectedTanks.length + selectedDps.length + selectedSupports.length;
   if (heroesCount === 5) findButton.style.display = "block";
 }
@@ -159,7 +175,7 @@ function showCounterPicks(responseDict) {
     header.classList.add("note-header");
 
     const heroIcon = document.createElement("img");
-    heroIcon.src = `/static/icons/${iconMap[hero]}`;
+    heroIcon.src = `/static/mini-icons/${iconMap[hero]}`;
     heroIcon.alt = hero;
     heroIcon.classList.add("hero-icon");
 
@@ -185,7 +201,7 @@ function showCounterPicks(responseDict) {
 
       const counterHeroName = counterName.split(" ")[0]; // берем имя без (Сильный/Слабый)
       const counterIcon = document.createElement("img");
-      counterIcon.src = `/static/icons/${iconMap[counterHeroName]}`;
+      counterIcon.src = `/static/mini-icons/${iconMap[counterHeroName]}`;
       counterIcon.alt = counterHeroName;
       counterIcon.classList.add("counter-icon");
 
@@ -204,9 +220,15 @@ function showCounterPicks(responseDict) {
     heroCard.appendChild(content);
 
     container.appendChild(heroCard);
-    document.getElementById("counters-container").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+
+    const scrollTarget = document.getElementById("counters-container");
+    const topOffset = 0;
+    const elementPosition = scrollTarget.getBoundingClientRect().top;
+    const offsetPosition = elementPosition - topOffset;
+
+    window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
   }
 }
