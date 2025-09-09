@@ -12,6 +12,8 @@ let roleDict = {
 
 document.querySelectorAll(".hero").forEach(btn => {
   btn.addEventListener("click", () => {
+    const lastResult = document.getElementById("counters-container");
+    lastResult.style.display = "none";
     const img = btn.querySelector("img");
     const roleName = btn.closest(".role").querySelector(".role-title").textContent;
     addRemoveHero(roleName, img.alt, img.src);
@@ -221,6 +223,7 @@ function showCounterPicks(responseDict) {
 
     container.appendChild(heroCard);
 
+    container.style.display = "block";
     const scrollTarget = document.getElementById("counters-container");
     const topOffset = 0;
     const elementPosition = scrollTarget.getBoundingClientRect().top;
