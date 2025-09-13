@@ -187,7 +187,7 @@ function showCounterPicks(responseDict) {
     header.classList.add("note-header");
 
     const heroIcon = document.createElement("img");
-    heroIcon.src = `/mini-icons/${iconMap[hero]}`;
+    heroIcon.src = `mini-icons/${iconMap[hero]}`;
     heroIcon.alt = hero;
     heroIcon.classList.add("hero-icon");
 
@@ -213,7 +213,7 @@ function showCounterPicks(responseDict) {
 
       const counterHeroName = counterName.split(" ")[0]; // берем имя без (Сильный/Слабый)
       const counterIcon = document.createElement("img");
-      counterIcon.src = `/mini-icons/${iconMap[counterHeroName]}`;
+      counterIcon.src = `mini-icons/${iconMap[counterHeroName]}`;
       counterIcon.alt = counterHeroName;
       counterIcon.classList.add("counter-icon");
 
