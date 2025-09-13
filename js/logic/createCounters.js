@@ -1,4 +1,4 @@
-import { heroLibrary } from "../data/heroLibrary.js";
+// import { heroLibrary } from "../data/heroLibrary.js";
 
 const powerLevels = {
   1: "Слабый",

@@ -1,4 +1,4 @@
-import { createCounterPickDict } from "../logic/createCounters.js";
+// import { createCounterPickDict } from "../logic/createCounters.js";
 
 const findButton = document.getElementById("find-button");
 
