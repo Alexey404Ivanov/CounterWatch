@@ -1,3 +1,5 @@
+import { createCounterPickDict } from "../logic/createCounters.js";
+
 const findButton = document.getElementById("find-button");
 
 let selectedTanks = [];
@@ -96,25 +98,34 @@ function removeHero(roleName, idx) {
   }
 }
 
-async function getCounterPicks() {
-    const full_team = selectedTanks.concat(selectedDps, selectedSupports);
-    const response = await fetch("http://127.0.0.1:8000/get_counters", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            heroes: full_team
-        })
-    });
+// async function getCounterPicks() {
+//     const full_team = selectedTanks.concat(selectedDps, selectedSupports);
+//     const response = await fetch("http://127.0.0.1:8000/get_counters", {
+//         method: "POST",
+//         headers: {
+//         "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({
+//             heroes: full_team
+//         })
+//     });
+//
+//     if (response.ok) {
+//         const dict = await response.json();
+//         showCounterPicks(dict, full_team);
+//     } else {
+//         console.error("Ошибка при получении контрпиков");
+//     }
+// }
 
-    if (response.ok) {
-        const dict = await response.json();
-        showCounterPicks(dict, full_team);
-    } else {
-        console.error("Ошибка при получении контрпиков");
-    }
+document.getElementById("find-button").addEventListener("click", getCounterPicks);
+
+function getCounterPicks() {
+  const full_team = selectedTanks.concat(selectedDps, selectedSupports);
+  let dict = createCounterPickDict(full_team);
+  showCounterPicks(dict);
 }
+
 
 const iconMap = {
   "Ана": "ana.png",
@@ -165,9 +176,8 @@ function showCounterPicks(responseDict) {
   const container = document.getElementById("counters-container");
   container.innerHTML = ""; // очищаем старый вывод
 
-  const countersObj = responseDict.counters;
 
-  for (const [hero, counters] of Object.entries(countersObj)) {
+  for (const [hero, counters] of Object.entries(responseDict)) {
     // Карточка героя
     const heroCard = document.createElement("div");
     heroCard.classList.add("counter-note");
@@ -177,7 +187,7 @@ function showCounterPicks(responseDict) {
     header.classList.add("note-header");
 
     const heroIcon = document.createElement("img");
-    heroIcon.src = `/static/mini-icons/${iconMap[hero]}`;
+    heroIcon.src = `/mini-icons/${iconMap[hero]}`;
     heroIcon.alt = hero;
     heroIcon.classList.add("hero-icon");
 
@@ -203,7 +213,7 @@ function showCounterPicks(responseDict) {
 
       const counterHeroName = counterName.split(" ")[0]; // берем имя без (Сильный/Слабый)
       const counterIcon = document.createElement("img");
-      counterIcon.src = `/static/mini-icons/${iconMap[counterHeroName]}`;
+      counterIcon.src = `/mini-icons/${iconMap[counterHeroName]}`;
       counterIcon.alt = counterHeroName;
       counterIcon.classList.add("counter-icon");
 
