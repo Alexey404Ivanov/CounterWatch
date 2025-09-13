@@ -1,4 +1,3 @@
-// Класс Counter
 class Counter {
   constructor(name, power, reason) {
     this.name = name;
@@ -7,7 +6,6 @@ class Counter {
   }
 }
 
-// Библиотека героев
 const heroLibrary = {
   "Уинстон": [
       new Counter("Турбосвин", 3, "Дробовик и хук идеально работают на большой хитбокс Уинстона"),

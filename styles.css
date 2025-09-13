@@ -102,18 +102,6 @@ h1 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/*.selected-hero:hover {*/
-/*  border-color: transparent;*/
-/*  transform: scale(1.05);*/
-/*  transition: 0.2s;*/
-/*  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); !* тень для объёма *!*/
-/*}*/
-
-/*.selected-hero:active {*/
-/*  transform: scale(0.95);*/
-/*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
-/*}*/
-
 .roles {
   display: flex;
   gap: 20px;
@@ -122,11 +110,10 @@ h1 {
   margin: 20px 0;
 }
 
-/* Контейнер роли */
 .role {
   flex: 1;
   display: flex;
-  flex-direction: column; /* сверху текст, снизу иконки */
+  flex-direction: column;
   align-items: center;
   gap: 15px;
   background: rgba(27, 39, 53, 0.5);
@@ -142,7 +129,6 @@ h1 {
     box-shadow: 0 8px 16px rgba(0,0,0,0.4);
 }
 
-/* Название роли */
 .role-title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -152,14 +138,12 @@ h1 {
   letter-spacing: 1px;
 }
 
-/* Сетка для иконок */
 .role-icons {
   display: grid;
   gap: 10px;
   justify-content: center;
 }
 
-/* Ограничения по колонкам */
 .role.tank .role-icons {
   grid-template-columns: repeat(4, 119px);
 }
@@ -172,7 +156,6 @@ h1 {
   grid-template-columns: repeat(5, 119px);
 }
 
-/* Кнопка-иконка */
 .hero {
   width: 119px;
   height: 150px;
@@ -195,7 +178,6 @@ h1 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Эффект при наведении */
 .hero:hover {
   border-color: transparent;
   transform: scale(1.05);

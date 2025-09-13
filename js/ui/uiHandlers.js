@@ -1,5 +1,3 @@
-// import { createCounterPickDict } from "../logic/createCounters.js";
-
 const findButton = document.getElementById("find-button");
 
 let selectedTanks = [];
@@ -21,16 +19,6 @@ document.querySelectorAll(".hero").forEach(btn => {
     addRemoveHero(roleName, img.alt, img.src);
   });
 });
-
-// document.querySelectorAll(".selected-role").forEach(roleBlock => {
-//   const roleName = roleBlock.id;
-//   roleBlock.querySelectorAll(".selected-hero").forEach((btn, index) => {
-//     btn.addEventListener("click", () => {
-//       const img = btn.querySelector("img");
-//       addRemoveHero(roleName, img.alt, img.src);
-//     });
-//   });
-// });
 
 function convertIconImage(imageUrl, toNormal) {
   return toNormal ? imageUrl.replace("/black-white/", "/normal/") : imageUrl.replace("/normal/", "/black-white/");
@@ -98,26 +86,6 @@ function removeHero(roleName, idx) {
   }
 }
 
-// async function getCounterPicks() {
-//     const full_team = selectedTanks.concat(selectedDps, selectedSupports);
-//     const response = await fetch("http://127.0.0.1:8000/get_counters", {
-//         method: "POST",
-//         headers: {
-//         "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify({
-//             heroes: full_team
-//         })
-//     });
-//
-//     if (response.ok) {
-//         const dict = await response.json();
-//         showCounterPicks(dict, full_team);
-//     } else {
-//         console.error("Ошибка при получении контрпиков");
-//     }
-// }
-
 document.getElementById("find-button").addEventListener("click", getCounterPicks);
 
 function getCounterPicks() {
@@ -176,13 +144,10 @@ function showCounterPicks(responseDict) {
   const container = document.getElementById("counters-container");
   container.innerHTML = ""; // очищаем старый вывод
 
-
   for (const [hero, counters] of Object.entries(responseDict)) {
-    // Карточка героя
     const heroCard = document.createElement("div");
     heroCard.classList.add("counter-note");
 
-    // Заголовок героя
     const header = document.createElement("div");
     header.classList.add("note-header");
 
@@ -199,14 +164,12 @@ function showCounterPicks(responseDict) {
     header.appendChild(heroIcon);
     header.appendChild(heroName);
 
-    // Контент
     const content = document.createElement("div");
     content.classList.add("note-content");
 
     const counterBlock = document.createElement("div");
     counterBlock.classList.add("counter-block");
 
-    // Контрящие герои
     counters.forEach(([counterName, description]) => {
       const counterItem = document.createElement("div");
       counterItem.classList.add("counter-item");
