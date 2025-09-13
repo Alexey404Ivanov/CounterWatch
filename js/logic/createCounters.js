@@ -14,7 +14,7 @@ function addPower(counterDict, name, power) {
 }
 
 // главная функция
-export function createCounterPickDict(enemyTeam) {
+function createCounterPickDict(enemyTeam) {
   // берем самого первого врага и его топ-танк контрпик
   const counterTank = heroLibrary[enemyTeam[0]][0];
 
